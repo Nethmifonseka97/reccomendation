@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = 'secret_key_for_flash_messages'
 
+
 # Dummy user data (replace with a database)
 users = [{'username': 'user1', 'password': generate_password_hash('password1')},
          {'username': 'user2', 'password': generate_password_hash('password2')}]
@@ -12,6 +13,8 @@ users = [{'username': 'user1', 'password': generate_password_hash('password1')},
 def index():
     return render_template('index.html')
 
+
+# API for login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -30,6 +33,7 @@ def login():
     return render_template('login.html')
     
 
+# API for register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -50,7 +54,7 @@ def register():
 
 
 # ...
-
+# API for user
 @app.route('/user',methods=['GET', 'POST'])
 def user(): 
     if request.method == 'POST':
